@@ -25,6 +25,10 @@ public class LoginPage extends BasePage {
         return getDriver().findElement(email);
     }
 
+    public By getByEmail() {
+        return email;
+    }
+
     public WebElement getPassword() {
         return getDriver().findElement(password);
     }
@@ -32,7 +36,6 @@ public class LoginPage extends BasePage {
     public WebElement getLoginBtn() {
         return getDriver().findElement(loginBtn);
     }
-
 
     public WebElement getUserErrorMessage() {
         return getDriver().findElement(userErrorMessage);

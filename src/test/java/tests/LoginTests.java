@@ -2,43 +2,27 @@ package tests;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-import java.time.Duration;
-
-public class LoginTests {
+public class LoginTests extends BaseTest {
 
     private HomePage homePage;
 
     private LoginPage loginPage;
-    private WebDriver driver;
-    private WebDriverWait driverWait;
 
     @BeforeClass
     public void beforeclass() {
-        System.setProperty("webdriver.gecko.driver", "C:\\Milan\\Programiranje\\Java\\Selenium\\geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.get("https://vue-demo.daniel-avellaneda.com/login");
-        driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
+        setup();
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
+        driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getLoginButton()));
+        homePage.getLoginButton().sendKeys(Keys.ENTER);
     }
-
-/*    @BeforeMethod
-    public void beforeMethod() {
-        loginPage.getEmail().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
-        loginPage.getPassword().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
-    }*/
 
     @Test(priority = 1)
     public void checksIfItIsOnLoginPage() {
@@ -53,6 +37,8 @@ public class LoginTests {
     public void checkInputTypes() {
         String expectedEmail = "email";
         String expectedPassword = "password";
+
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
 
         String actualEmail = loginPage.getEmail().getAttribute("type");
         String actualPassword = loginPage.getPassword().getAttribute("type");
@@ -70,8 +56,9 @@ public class LoginTests {
         String expectedText = "User does not exists";
         String expectedUrl = "/login";
 
-        loginPage.getEmail().sendKeys(faker.internet().emailAddress());
+        driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getEmail()));
 
+        loginPage.getEmail().sendKeys(faker.internet().emailAddress());
         loginPage.getPassword().sendKeys(faker.internet().password());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
@@ -110,6 +97,7 @@ public class LoginTests {
     @Test(priority = 5)
     public void loginWithValidCredentials() {
         String expectedUrl = "/home";
+
         loginPage.clearEmailPasswordFields();
 
         loginPage.getEmail().sendKeys("admin@admin.com");
@@ -118,7 +106,7 @@ public class LoginTests {
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);
-        //driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getLogoutButton()));
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
