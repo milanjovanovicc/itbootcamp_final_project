@@ -12,7 +12,6 @@ import pages.LoginPage;
 public class LoginTests extends BaseTest {
 
     private HomePage homePage;
-
     private LoginPage loginPage;
 
     @BeforeClass

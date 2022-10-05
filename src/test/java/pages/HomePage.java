@@ -11,6 +11,8 @@ public class HomePage extends BasePage {
     private By logoutButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]");
     private By logoutText = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]/span");
     private By homeButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[1]");
+    private By signUpButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[4]");
+    private By verifyYourAccount = By.xpath("/html/body/div/div[4]/div/div/div[1]");
 
 
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
@@ -35,5 +37,21 @@ public class HomePage extends BasePage {
 
     public By getByLogoutButton() {
         return logoutButton;
+    }
+
+    public WebElement getSignUpButton() {
+        return getDriver().findElement(signUpButton);
+    }
+
+    public WebElement getVerifyYourAccount() {
+        return getDriver().findElement(verifyYourAccount);
+    }
+
+    public By getByVerifyYourAccount() {
+        return verifyYourAccount;
+    }
+
+    public By getByLoginButton() {
+        return loginButton;
     }
 }
