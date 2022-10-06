@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -42,6 +43,7 @@ public class SignUpTests extends BaseTest {
         String expectedPassword = "password";
         //String expectedConfirmPassword = "password";
 
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(signUpPage.getBySignMeUpButton()));
         String actualEmail = signUpPage.getEmail().getAttribute("type");
         String actualPassword = signUpPage.getPassword().getAttribute("type");
         String actualConfirmPassword = signUpPage.getConfirmPassword().getAttribute("type");
@@ -54,13 +56,16 @@ public class SignUpTests extends BaseTest {
     @Test(priority = 3)
     public void verifyErrorDisplayIfUserExists() {
         String expectedUserError = "E-mail already exists";
+        String name = "Test Test";
+        String email = "admin@admin.com";
+        String password = "123654";
         String expectedUrl = "/signup";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(signUpPage.getBySignMeUpButton()));
-        signUpPage.getName().sendKeys("Test Test");
-        signUpPage.getEmail().sendKeys("admin@admin.com");
-        signUpPage.getPassword().sendKeys("123654");
-        signUpPage.getConfirmPassword().sendKeys("123654");
+        signUpPage.getName().sendKeys(name);
+        signUpPage.getEmail().sendKeys(email);
+        signUpPage.getPassword().sendKeys(password);
+        signUpPage.getConfirmPassword().sendKeys(password);
         signUpPage.getSignMeUpButton().click();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(signUpPage.getByUserError()));
@@ -74,7 +79,7 @@ public class SignUpTests extends BaseTest {
 
     @Test(priority = 4)
     public void signUpWithValidCredentials() {
-        signUpPage.clearAllFields();
+        //signUpPage.clearAllFields();
         String expectedVerifyYourAccount = "IMPORTANT: Verify your account";
         String name = "Milan Jovanovic";
         String email = "milan.jovanovic@itbootcamp.rs";
@@ -92,4 +97,5 @@ public class SignUpTests extends BaseTest {
         Assert.assertTrue(actualVerifyYourAccount.contains(expectedVerifyYourAccount));
 
     }
+
 }

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 
 public class HomePage extends BasePage {
 
@@ -13,6 +14,8 @@ public class HomePage extends BasePage {
     private By homeButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[1]");
     private By signUpButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[4]");
     private By verifyYourAccount = By.xpath("/html/body/div/div[4]/div/div/div[1]");
+    private By adminButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[1]");
+    private By adminListCities = By.xpath("//*[@id='app']/div[3]/div[1]/a[1]");
 
 
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
@@ -54,4 +57,21 @@ public class HomePage extends BasePage {
     public By getByLoginButton() {
         return loginButton;
     }
+
+    public WebElement getAdminButton() {
+        return getDriver().findElement(adminButton);
+    }
+
+    public By getByAdminButton() {
+        return adminButton;
+    }
+
+    public WebElement getAdminListCities() {
+        return getDriver().findElement(adminListCities);
+    }
+
+    public By getByAdminListCities() {
+        return adminListCities;
+    }
+
 }

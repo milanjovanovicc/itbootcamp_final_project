@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 
 import java.time.Duration;
 
@@ -19,7 +20,9 @@ public abstract class BaseTest {
         driver.manage().deleteAllCookies();
     }
 
-/*    public void afterClass() {
+
+/*    @AfterClass
+    public void afterClass() {
         driver.quit();
     }*/
 }

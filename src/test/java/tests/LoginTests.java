@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -50,12 +52,12 @@ public class LoginTests extends BaseTest {
     @Test(priority = 3)
     public void loginWithInvalidEmail() {
         Faker faker = new Faker();
-        loginPage.clearEmailPasswordFields();
+        //loginPage.clearEmailPasswordFields();
 
         String expectedText = "User does not exists";
         String expectedUrl = "/login";
 
-        driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getEmail()));
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
 
         loginPage.getEmail().sendKeys(faker.internet().emailAddress());
         loginPage.getPassword().sendKeys(faker.internet().password());
@@ -74,13 +76,14 @@ public class LoginTests extends BaseTest {
     @Test(priority = 4)
     public void loginWithInvalidPassword() {
         Faker faker = new Faker();
-        loginPage.clearEmailPasswordFields();
+        String email = "admin@admin.com";
+        //loginPage.clearEmailPasswordFields();
 
         String expectedText = "Wrong password";
         String expectedUrl = "/login";
 
-        loginPage.getEmail().sendKeys("admin@admin.com");
-
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
+        loginPage.getEmail().sendKeys(email);
         loginPage.getPassword().sendKeys(faker.internet().password());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
@@ -96,12 +99,14 @@ public class LoginTests extends BaseTest {
     @Test(priority = 5)
     public void loginWithValidCredentials() {
         String expectedUrl = "/home";
+        String validEmail = "admin@admin.com";
+        String validPassword = "12345";
 
-        loginPage.clearEmailPasswordFields();
+        //loginPage.clearEmailPasswordFields();
 
-        loginPage.getEmail().sendKeys("admin@admin.com");
-
-        loginPage.getPassword().sendKeys("12345");
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
+        loginPage.getEmail().sendKeys(validEmail);
+        loginPage.getPassword().sendKeys(validPassword);
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);
@@ -117,10 +122,18 @@ public class LoginTests extends BaseTest {
 
     @Test(priority = 6)
     public void logout() {
+        String validEmail = "admin@admin.com";
+        String validPassword = "12345";
+
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
+        loginPage.getEmail().sendKeys(validEmail);
+        loginPage.getPassword().sendKeys(validPassword);
+        loginPage.getLoginBtn().click();
 
         String expectedLogout = "LOGOUT";
         String expectedLogin = "/login";
 
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
         String actualLogout = homePage.getLogoutText().getText();
 
         Assert.assertEquals(actualLogout, expectedLogout);
@@ -135,4 +148,6 @@ public class LoginTests extends BaseTest {
         String actualUrl = driver.getCurrentUrl();
         Assert.assertTrue(actualUrl.contains(expectedLogin));
     }
+
+
 }
