@@ -24,6 +24,7 @@ public class HomePage extends BasePage {
     private By headerText = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[1]/h1");
     private By localeListEN = By.xpath("/html/body/div/div[2]/div/div[1]");
     private By localeListFR = By.xpath("/html/body/div/div[2]/div/div[3]");
+    private By myProfile = By.xpath("/html/body/div/div/div/header/div/div[3]/a[3]");
 
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -119,6 +120,14 @@ public class HomePage extends BasePage {
 
     public WebElement getLocaleListFR() {
         return getDriver().findElement(localeListFR);
+    }
+
+    public WebElement getMyProfile(){
+        return getDriver().findElement(myProfile);
+    }
+
+    public By getByMyProfile(){
+        return myProfile;
     }
 
 }
