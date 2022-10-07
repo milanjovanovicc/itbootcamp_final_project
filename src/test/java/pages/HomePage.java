@@ -15,10 +15,6 @@ public class HomePage extends BasePage {
     private By verifyYourAccount = By.xpath("/html/body/div/div[4]/div/div/div[1]");
     private By adminButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[1]");
     private By adminListCities = By.xpath("//*[@id='app']/div[3]/div[1]/a[1]");
-    private String homepageUrl = new String("https://vue-demo.daniel-avellaneda.com/home");
-    private String profilePage = new String("https://vue-demo.daniel-avellaneda.com/profile");
-    private String adminCitiesPage = new String("https://vue-demo.daniel-avellaneda.com/admin/cities");
-    private String adminUsersPage = new String("https://vue-demo.daniel-avellaneda.com/admin/users");
     private By localeButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button");
     private By localeListES = By.xpath("/html/body/div/div[2]/div/div[2]");
     private By headerText = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[1]/h1");
@@ -83,19 +79,19 @@ public class HomePage extends BasePage {
     }
 
     public String getHomepageUrl() {
-        return homepageUrl;
+        return "https://vue-demo.daniel-avellaneda.com/home";
     }
 
     public String getProfilePage() {
-        return profilePage;
+        return "https://vue-demo.daniel-avellaneda.com/profile";
     }
 
     public String getAdminCitiesPage() {
-        return adminCitiesPage;
+        return "https://vue-demo.daniel-avellaneda.com/admin/cities";
     }
 
     public String getAdminUsersPage() {
-        return adminUsersPage;
+        return "https://vue-demo.daniel-avellaneda.com/admin/users";
     }
 
     public WebElement getLocaleButton() {

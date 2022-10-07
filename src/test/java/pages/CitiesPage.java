@@ -81,9 +81,12 @@ public class CitiesPage extends BasePage {
         return getDriver().findElement(saveEdit);
     }
 
-    public String getFakeCityName() {
+    public String getCityName() {
         return "Morinj";
-//        return faker.address().cityName();
+    }
+
+    public String getEditedCityName() {
+        return "Morinj";
     }
 
     public WebElement getEnterCityName() {

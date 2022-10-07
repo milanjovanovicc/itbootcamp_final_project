@@ -67,7 +67,7 @@ public class AdminCitiesTest extends BaseTest {
 
         driverWait.until(ExpectedConditions.visibilityOf(citiesPage.getEnterNewCity()));
         //citiesPage.getEnterNewCity().sendKeys(faker.address().city());
-        citiesPage.getEnterNewCity().sendKeys(citiesPage.getFakeCityName());
+        citiesPage.getEnterNewCity().sendKeys(citiesPage.getCityName());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(citiesPage.getSaveNewItem()));
         citiesPage.getSaveNewItem().click();
@@ -88,7 +88,9 @@ public class AdminCitiesTest extends BaseTest {
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySaveEdit()));
         citiesPage.clearCityNameFiled();
-        citiesPage.getEnterCityName().sendKeys(citiesPage.getFakeCityName());
+        citiesPage.getEnterCityName().sendKeys(citiesPage.getEditedCityName());
+
+        driverWait.until(ExpectedConditions.elementToBeClickable(citiesPage.getSaveEdit()));
         citiesPage.getSaveEdit().click();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySaveMessage()));
@@ -103,25 +105,26 @@ public class AdminCitiesTest extends BaseTest {
         String expectedResult = "Morinj";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySearchBar()));
-        citiesPage.getSearchBar().sendKeys(expectedResult);
+        citiesPage.getSearchBar().sendKeys(citiesPage.getEditedCityName());
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getByNameOfTheCity()));
         String actualResult = citiesPage.getNameOfTheCity().getText();
         Assert.assertEquals(actualResult, expectedResult);
+
     }
 
     @Test(priority = 5)
     public void verifyCityIsDeleted() {
         Actions action = new Actions(driver);
         String expecetedMessage = "Deleted successfully";
-        String expectedCity = citiesPage.getFakeCityName();
+        String expectedCity = "Morinj";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySearchBar()));
-        citiesPage.getSearchBar().sendKeys(citiesPage.getFakeCityName());
+        citiesPage.getSearchBar().sendKeys(citiesPage.getCityName());
 
         driverWait.until(ExpectedConditions.numberOfElementsToBe(citiesPage.getByNameOfTheCity(),1));
         String actualCity = citiesPage.getNameOfTheCity().getText();
-        Assert.assertEquals(actualCity, expectedCity);
+        Assert.assertTrue(actualCity.contains(expectedCity));
         citiesPage.getDeleteCity().click();
 
         //driverWait.until(ExpectedConditions.visibilityOf(citiesPage.getDeletePopup()));

@@ -30,7 +30,6 @@ public class ProfileTest extends BaseTest{
         loginPage.getPassword().sendKeys(loginPage.getAdminPassword());
         loginPage.getLoginBtn().click();
 
-        //driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getByMyProfile()));
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
