@@ -3,7 +3,6 @@ package tests;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -41,7 +40,6 @@ public class SignUpTests extends BaseTest {
     public void checksInputTypes() {
         String expectedEmail = "email";
         String expectedPassword = "password";
-        //String expectedConfirmPassword = "password";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(signUpPage.getBySignMeUpButton()));
         String actualEmail = signUpPage.getEmail().getAttribute("type");
@@ -56,16 +54,13 @@ public class SignUpTests extends BaseTest {
     @Test(priority = 3)
     public void verifyErrorDisplayIfUserExists() {
         String expectedUserError = "E-mail already exists";
-        String name = "Test Test";
-        String email = "admin@admin.com";
-        String password = "123654";
         String expectedUrl = "/signup";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(signUpPage.getBySignMeUpButton()));
-        signUpPage.getName().sendKeys(name);
-        signUpPage.getEmail().sendKeys(email);
-        signUpPage.getPassword().sendKeys(password);
-        signUpPage.getConfirmPassword().sendKeys(password);
+        signUpPage.getName().sendKeys(signUpPage.getAdminName());
+        signUpPage.getEmail().sendKeys(signUpPage.getAdminEmail());
+        signUpPage.getPassword().sendKeys(signUpPage.getAdminPassword());
+        signUpPage.getConfirmPassword().sendKeys(signUpPage.getAdminPassword());
         signUpPage.getSignMeUpButton().click();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(signUpPage.getByUserError()));
@@ -79,25 +74,27 @@ public class SignUpTests extends BaseTest {
 
     @Test(priority = 4)
     public void signUpWithValidCredentials() {
-        //signUpPage.clearAllFields();
+        signUpPage.clearAllFields();
         String expectedVerifyYourAccount = "IMPORTANT: Verify your account";
-        String name = "Milan Jovanovic";
-        String email = "milan.jovanovic@itbootcamp.rs";
-        String password = "123456";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(signUpPage.getBySignMeUpButton()));
-        signUpPage.getName().sendKeys(name);
-        signUpPage.getEmail().sendKeys(email);
-        signUpPage.getPassword().sendKeys(password);
-        signUpPage.getConfirmPassword().sendKeys(password);
+        signUpPage.getName().sendKeys(signUpPage.getValidName());
+        signUpPage.getEmail().sendKeys(signUpPage.getValidEmail());
+        signUpPage.getPassword().sendKeys(signUpPage.getValidPassword());
+        signUpPage.getConfirmPassword().sendKeys(signUpPage.getValidPassword());
         signUpPage.getSignMeUpButton().click();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByVerifyYourAccount()));
         String actualVerifyYourAccount = homePage.getVerifyYourAccount().getText();
         Assert.assertTrue(actualVerifyYourAccount.contains(expectedVerifyYourAccount));
 
+        driverWait.until(ExpectedConditions.visibilityOf(signUpPage.getVerifyUserCancelBtn()));
+        signUpPage.getVerifyUserCancelBtn().click();
+
 /*        driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
         homePage.getLogoutButton().click();*/
+
+        afterMethodSetup();
 
     }
 

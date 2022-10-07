@@ -1,6 +1,5 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -32,12 +31,9 @@ public class AdminCitiesTest extends BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {
-        String email = "admin@admin.com";
-        String password = "12345";
-
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
-        loginPage.getEmail().sendKeys(email);
-        loginPage.getPassword().sendKeys(password);
+        loginPage.getEmail().sendKeys(loginPage.getAdminEmail());
+        loginPage.getPassword().sendKeys(loginPage.getAdminPassword());
         loginPage.getLoginBtn().click();
 
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getByAdminButton()));

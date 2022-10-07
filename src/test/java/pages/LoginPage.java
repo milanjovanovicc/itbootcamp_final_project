@@ -15,8 +15,6 @@ public class LoginPage extends BasePage {
     private By userErrorMessage = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li");
     private By passwordErrorWindow = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li");
     private By passwordErrorMessage = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li");
-    private String adminEmail = "admin@admin.com";
-    private String adminPassword = "12345";
 
     public LoginPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -55,11 +53,11 @@ public class LoginPage extends BasePage {
     }
 
     public String getAdminEmail() {
-        return adminEmail;
+        return "admin@admin.com";
     }
 
     public String getAdminPassword() {
-        return adminPassword;
+        return "12345";
     }
 
     public void clearEmailPasswordFields() {

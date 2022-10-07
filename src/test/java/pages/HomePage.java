@@ -122,11 +122,11 @@ public class HomePage extends BasePage {
         return getDriver().findElement(localeListFR);
     }
 
-    public WebElement getMyProfile(){
+    public WebElement getMyProfile() {
         return getDriver().findElement(myProfile);
     }
 
-    public By getByMyProfile(){
+    public By getByMyProfile() {
         return myProfile;
     }
 

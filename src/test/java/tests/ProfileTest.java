@@ -3,6 +3,7 @@ package tests;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -36,7 +37,7 @@ public class ProfileTest extends BaseTest{
             throw new RuntimeException(e);
         }
         homePage.getMyProfile().click();
-        
+
     }
 
     @Test
@@ -66,5 +67,9 @@ public class ProfileTest extends BaseTest{
         Assert.assertNotNull(myProfilePage.getCountryField().getAttribute("value"));
         Assert.assertNotNull(myProfilePage.getTwitterField().getAttribute("value"));
         Assert.assertNotNull(myProfilePage.getGitHubField().getAttribute("value"));
+    }
+    @AfterMethod
+    public void afterMethod(){
+        afterMethodSetup();
     }
 }

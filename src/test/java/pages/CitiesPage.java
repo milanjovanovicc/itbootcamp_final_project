@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.security.PublicKey;
-
 public class CitiesPage extends BasePage {
 
     private By citiesLogout = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]");

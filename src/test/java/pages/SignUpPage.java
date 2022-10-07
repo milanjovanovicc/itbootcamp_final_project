@@ -16,6 +16,14 @@ public class SignUpPage extends BasePage {
             By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button");
     private By userError =
             By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div/div[1]/ul/li");
+    public By verifyUserCancelBtn = By.xpath("/html/body/div/div[4]/div/div/div[3]/button");
+
+    public String adminName = "Test Test";
+    public String adminEmail = "admin@admin.com";
+    public String adminPassword = "123654";
+    public String validName = "Milan Jovanovic";
+    public String validEmail = "milan.jovanovic@itbootcamp.rs";
+    public String validPassword = "123456";
 
     public SignUpPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -54,10 +62,38 @@ public class SignUpPage extends BasePage {
         return userError;
     }
 
+    public WebElement getVerifyUserCancelBtn() {
+        return getDriver().findElement(verifyUserCancelBtn);
+    }
+
     public void clearAllFields() {
         getName().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
         getEmail().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
         getPassword().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
         getConfirmPassword().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
+    }
+
+    public String getAdminName() {
+        return adminName;
+    }
+
+    public String getAdminEmail() {
+        return adminEmail;
+    }
+
+    public String getAdminPassword() {
+        return adminPassword;
+    }
+
+    public String getValidName() {
+        return validName;
+    }
+
+    public String getValidEmail() {
+        return validEmail;
+    }
+
+    public String getValidPassword() {
+        return validPassword;
     }
 }
