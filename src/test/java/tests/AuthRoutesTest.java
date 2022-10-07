@@ -6,21 +6,21 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class AuthRoutesTest extends BaseTest{
+public class AuthRoutesTest extends BaseTest {
 
     private HomePage homePage;
     private LoginPage loginPage;
 
     @BeforeClass
-    private void beforeClass(){
+    private void beforeClass() {
         setup();
-        homePage = new HomePage(driver,driverWait);
-        loginPage = new LoginPage(driver,driverWait);
+        homePage = new HomePage(driver, driverWait);
+        loginPage = new LoginPage(driver, driverWait);
 
     }
 
     @Test
-    public void verifyHomeIsNotVisitableIfNotAuthenticated(){
+    public void verifyHomeIsNotVisitableIfNotAuthenticated() {
         String expectedResult = "/login";
 
         driver.get(homePage.getHomepageUrl());
@@ -31,7 +31,7 @@ public class AuthRoutesTest extends BaseTest{
     }
 
     @Test
-    public void verifyProfileIsNotVisitableIfNotAuthenticated(){
+    public void verifyProfileIsNotVisitableIfNotAuthenticated() {
         String expectedResult = "/login";
 
         driver.get(homePage.getProfilePage());
@@ -42,7 +42,7 @@ public class AuthRoutesTest extends BaseTest{
     }
 
     @Test
-    public void verifyAdminCitiesNotVisitableIfNotAuthenticated(){
+    public void verifyAdminCitiesNotVisitableIfNotAuthenticated() {
         String expectedResult = "/login";
 
         driver.get(homePage.getAdminCitiesPage());
@@ -53,7 +53,7 @@ public class AuthRoutesTest extends BaseTest{
     }
 
     @Test
-    public void verifyAdminUsersNotVisitableIfNotAuthenticated(){
+    public void verifyAdminUsersNotVisitableIfNotAuthenticated() {
         String expectedResult = "/login";
 
         driver.get(homePage.getAdminUsersPage());

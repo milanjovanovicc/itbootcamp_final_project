@@ -49,8 +49,6 @@ public class AdminCitiesTest extends BaseTest {
 
     @Test(priority = 1)
     public void verifyCitiesPageAndListExists() {
-        String email = "admin@admin.com";
-        String password = "12345";
         String expectedUrl = "/admin/cities";
         String expectedLogoutBtn = "LOGOUT";
 
