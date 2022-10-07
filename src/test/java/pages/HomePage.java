@@ -38,10 +38,6 @@ public class HomePage extends BasePage {
         return getDriver().findElement(logoutText);
     }
 
-    public WebElement getHomeButton() {
-        return getDriver().findElement(homeButton);
-    }
-
     public By getByLogoutButton() {
         return logoutButton;
     }
@@ -58,10 +54,6 @@ public class HomePage extends BasePage {
         return verifyYourAccount;
     }
 
-    public By getByLoginButton() {
-        return loginButton;
-    }
-
     public WebElement getAdminButton() {
         return getDriver().findElement(adminButton);
     }
@@ -72,10 +64,6 @@ public class HomePage extends BasePage {
 
     public WebElement getAdminListCities() {
         return getDriver().findElement(adminListCities);
-    }
-
-    public By getByAdminListCities() {
-        return adminListCities;
     }
 
     public String getHomepageUrl() {
@@ -122,8 +110,5 @@ public class HomePage extends BasePage {
         return getDriver().findElement(myProfile);
     }
 
-    public By getByMyProfile() {
-        return myProfile;
-    }
 
 }

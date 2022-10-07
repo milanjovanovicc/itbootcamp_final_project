@@ -59,14 +59,12 @@ public class AdminCitiesTest extends BaseTest {
 
     @Test(priority = 2)
     public void verifyNewCityIsCreated() {
-        //Faker faker = new Faker();
         String expectedResult = "Saved successfully";
 
         driverWait.until(ExpectedConditions.elementToBeClickable(citiesPage.getNewItembutton()));
         citiesPage.getNewItembutton().click();
 
         driverWait.until(ExpectedConditions.visibilityOf(citiesPage.getEnterNewCity()));
-        //citiesPage.getEnterNewCity().sendKeys(faker.address().city());
         citiesPage.getEnterNewCity().sendKeys(citiesPage.getCityName());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(citiesPage.getSaveNewItem()));
@@ -109,7 +107,7 @@ public class AdminCitiesTest extends BaseTest {
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getByNameOfTheCity()));
         String actualResult = citiesPage.getNameOfTheCity().getText();
-        Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertTrue(actualResult.contains(expectedResult));
 
     }
 
@@ -122,7 +120,13 @@ public class AdminCitiesTest extends BaseTest {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySearchBar()));
         citiesPage.getSearchBar().sendKeys(citiesPage.getCityName());
 
-        driverWait.until(ExpectedConditions.numberOfElementsToBe(citiesPage.getByNameOfTheCity(),1));
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        driverWait.until(ExpectedConditions.numberOfElementsToBe(citiesPage.getByNameOfTheCity(), 1));
         String actualCity = citiesPage.getNameOfTheCity().getText();
         Assert.assertTrue(actualCity.contains(expectedCity));
         citiesPage.getDeleteCity().click();
@@ -140,8 +144,9 @@ public class AdminCitiesTest extends BaseTest {
         String actualMessage = citiesPage.getDeleteSuccessfull().getText();
         Assert.assertTrue(actualMessage.contains(expecetedMessage));
     }
+
     @AfterMethod
-    public void afterMethod(){
+    public void afterMethod() {
         afterMethodSetup();
     }
 }

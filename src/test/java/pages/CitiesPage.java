@@ -1,6 +1,5 @@
 package pages;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +15,7 @@ public class CitiesPage extends BasePage {
     private By saveNewItem = By.xpath("/html/body/div/div[5]/div/div/div[3]/button[2]");
     private By saveMessage = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]");
     private By editButton = By.id("edit");
-    private By saveEdit = By.xpath("/html/body/div/div[5]/div/div/div[3]/button[2]");
+    private By saveEdit = By.xpath("//*[@id='app']/div[5]/div/div/div[3]/button[2]");
     private By enterEditCity = By.id("name");
     private By nameOfTheCity =
             By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr[1]/td[2]");
@@ -26,8 +25,6 @@ public class CitiesPage extends BasePage {
     private By searchBar = By.id("search");
     private By deleteSuccessfull =
             By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]");
-
-    private Faker faker = new Faker();
 
     public CitiesPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -73,10 +70,6 @@ public class CitiesPage extends BasePage {
         return editButton;
     }
 
-    public WebElement getEnterEditCity() {
-        return getDriver().findElement(enterEditCity);
-    }
-
     public WebElement getSaveEdit() {
         return getDriver().findElement(saveEdit);
     }
@@ -86,7 +79,7 @@ public class CitiesPage extends BasePage {
     }
 
     public String getEditedCityName() {
-        return "Morinj";
+        return "Morinj edited";
     }
 
     public WebElement getEnterCityName() {
@@ -125,10 +118,6 @@ public class CitiesPage extends BasePage {
         return getDriver().findElement(deleteCityConfirm);
     }
 
-    public By getByDeleteCityConfirm() {
-        return deleteCityConfirm;
-    }
-
     public WebElement getDeleteSuccessfull() {
         return getDriver().findElement(deleteSuccessfull);
     }
@@ -140,4 +129,5 @@ public class CitiesPage extends BasePage {
     public WebElement getDeletePopup() {
         return getDriver().findElement(deletePopup);
     }
+
 }
