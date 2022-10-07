@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
 
 public class HomePage extends BasePage {
 
@@ -16,6 +15,10 @@ public class HomePage extends BasePage {
     private By verifyYourAccount = By.xpath("/html/body/div/div[4]/div/div/div[1]");
     private By adminButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[1]");
     private By adminListCities = By.xpath("//*[@id='app']/div[3]/div[1]/a[1]");
+    private String homepageUrl = new String("https://vue-demo.daniel-avellaneda.com/home");
+    private String profilePage = new String("https://vue-demo.daniel-avellaneda.com/profile");
+    private String adminCitiesPage = new String("https://vue-demo.daniel-avellaneda.com/admin/cities");
+    private String adminUsersPage = new String("https://vue-demo.daniel-avellaneda.com/admin/users");
 
 
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
@@ -72,6 +75,22 @@ public class HomePage extends BasePage {
 
     public By getByAdminListCities() {
         return adminListCities;
+    }
+
+    public String getHomepageUrl(){
+        return homepageUrl;
+    }
+
+    public String getProfilePage(){
+        return profilePage;
+    }
+
+    public String getAdminCitiesPage(){
+        return adminCitiesPage;
+    }
+
+    public String getAdminUsersPage(){
+        return adminUsersPage;
     }
 
 }

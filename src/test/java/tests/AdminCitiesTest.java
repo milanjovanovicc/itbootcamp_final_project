@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -124,27 +125,26 @@ public class AdminCitiesTest extends BaseTest {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySearchBar()));
         citiesPage.getSearchBar().sendKeys(citiesPage.getFakeCityName());
 
-        //driverWait.until(ExpectedConditions.numberOfElementsToBe(citiesPage.getByNameOfTheCity(),1));
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        driverWait.until(ExpectedConditions.numberOfElementsToBe(citiesPage.getByNameOfTheCity(),1));
         String actualCity = citiesPage.getNameOfTheCity().getText();
         Assert.assertEquals(actualCity, expectedCity);
         citiesPage.getDeleteCity().click();
 
-        driverWait.until(ExpectedConditions.visibilityOf(citiesPage.getDeletePopup()));
-/*        try {
+        //driverWait.until(ExpectedConditions.visibilityOf(citiesPage.getDeletePopup()));
+        try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }*/
+        }
         action.moveToElement(citiesPage.getDeleteCityConfirm()).perform();
         citiesPage.getDeleteCityConfirm().click();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getByDeleteSuccessfull()));
         String actualMessage = citiesPage.getDeleteSuccessfull().getText();
         Assert.assertTrue(actualMessage.contains(expecetedMessage));
+    }
+    @AfterMethod
+    public void afterMethod(){
+        afterMethodSetup();
     }
 }

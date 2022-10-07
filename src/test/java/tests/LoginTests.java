@@ -110,14 +110,13 @@ public class LoginTests extends BaseTest {
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);
+
         driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         String actualUrl = driver.getCurrentUrl();
         Assert.assertTrue(actualUrl.contains(expectedUrl));
+
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
+        homePage.getLogoutButton().click();
     }
 
     @Test(priority = 6)
@@ -144,7 +143,7 @@ public class LoginTests extends BaseTest {
         System.out.println(actualLogin);
         Assert.assertTrue(actualLogin.contains(expectedLogin));
 
-        driver.get("https://vue-demo.daniel-avellaneda.com/home");
+        driver.get(homePage.getHomepageUrl());
         String actualUrl = driver.getCurrentUrl();
         Assert.assertTrue(actualUrl.contains(expectedLogin));
     }

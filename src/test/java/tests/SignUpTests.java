@@ -96,6 +96,9 @@ public class SignUpTests extends BaseTest {
         String actualVerifyYourAccount = homePage.getVerifyYourAccount().getText();
         Assert.assertTrue(actualVerifyYourAccount.contains(expectedVerifyYourAccount));
 
+/*        driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
+        homePage.getLogoutButton().click();*/
+
     }
 
 }
