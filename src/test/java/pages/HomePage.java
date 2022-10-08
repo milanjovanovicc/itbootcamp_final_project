@@ -10,7 +10,6 @@ public class HomePage extends BasePage {
     private By loginButton = By.xpath("/html/body/div/div/div/header/div/div[3]/a[3]");
     private By logoutButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]");
     private By logoutText = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]/span");
-    private By homeButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[1]");
     private By signUpButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[4]");
     private By verifyYourAccount = By.xpath("/html/body/div/div[4]/div/div/div[1]");
     private By adminButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[1]");
@@ -20,7 +19,8 @@ public class HomePage extends BasePage {
     private By headerText = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[1]/h1");
     private By localeListEN = By.xpath("/html/body/div/div[2]/div/div[1]");
     private By localeListFR = By.xpath("/html/body/div/div[2]/div/div[3]");
-    private By myProfile = By.xpath("/html/body/div/div/div/header/div/div[3]/a[3]");
+    private By myProfile = By.className("btnProfile");
+
 
     public HomePage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -110,5 +110,8 @@ public class HomePage extends BasePage {
         return getDriver().findElement(myProfile);
     }
 
+    public By getByMyProfile() {
+        return myProfile;
+    }
 
 }

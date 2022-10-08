@@ -10,18 +10,19 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.MyProfilePage;
 
-public class ProfileTest extends BaseTest{
+
+public class ProfileTest extends BaseTest {
 
     private HomePage homePage;
     private LoginPage loginPage;
     private MyProfilePage myProfilePage;
 
     @BeforeClass
-    private void beforeClass(){
+    private void beforeClass() {
         setup();
-        homePage = new HomePage(driver,driverWait);
-        loginPage = new LoginPage(driver,driverWait);
-        myProfilePage = new MyProfilePage(driver,driverWait);
+        homePage = new HomePage(driver, driverWait);
+        loginPage = new LoginPage(driver, driverWait);
+        myProfilePage = new MyProfilePage(driver, driverWait);
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getLoginButton()));
         homePage.getLoginButton().sendKeys(Keys.ENTER);
 
@@ -30,17 +31,13 @@ public class ProfileTest extends BaseTest{
         loginPage.getPassword().sendKeys(loginPage.getAdminPassword());
         loginPage.getLoginBtn().click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        homePage.getMyProfile().click();
+        driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getByMyProfile()));
+        homePage.getMyProfile().sendKeys(Keys.ENTER);
 
     }
 
     @Test
-    public void verifyEditProfileDisplaysMessage(){
+    public void verifyEditProfileDisplaysMessage() {
         String expectedResult = "Profile saved successfuly";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(myProfilePage.getBySaveButton()));
@@ -67,8 +64,9 @@ public class ProfileTest extends BaseTest{
         Assert.assertNotNull(myProfilePage.getTwitterField().getAttribute("value"));
         Assert.assertNotNull(myProfilePage.getGitHubField().getAttribute("value"));
     }
+
     @AfterMethod
-    public void afterMethod(){
+    public void afterMethod() {
         afterMethodSetup();
     }
 }

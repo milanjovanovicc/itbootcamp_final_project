@@ -91,9 +91,6 @@ public class SignUpTests extends BaseTest {
         driverWait.until(ExpectedConditions.visibilityOf(signUpPage.getVerifyUserCancelBtn()));
         signUpPage.getVerifyUserCancelBtn().click();
 
-/*        driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
-        homePage.getLogoutButton().click();*/
-
         afterMethodSetup();
 
     }
