@@ -1,7 +1,6 @@
 package tests;
 
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -39,7 +38,7 @@ public class AdminCitiesTest extends BaseTest {
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getByAdminButton()));
         homePage.getAdminButton().click();
 
-        driverWait.until(ExpectedConditions.visibilityOf(homePage.getAdminListCities()));
+        driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getAdminListCities()));
         homePage.getAdminListCities().click();
     }
 
@@ -113,31 +112,18 @@ public class AdminCitiesTest extends BaseTest {
 
     @Test(priority = 5)
     public void verifyCityIsDeleted() {
-        Actions action = new Actions(driver);
         String expecetedMessage = "Deleted successfully";
         String expectedCity = "Morinj";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySearchBar()));
         citiesPage.getSearchBar().sendKeys(citiesPage.getCityName());
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
         driverWait.until(ExpectedConditions.numberOfElementsToBe(citiesPage.getByNameOfTheCity(), 1));
         String actualCity = citiesPage.getNameOfTheCity().getText();
         Assert.assertTrue(actualCity.contains(expectedCity));
         citiesPage.getDeleteCity().click();
 
-        //driverWait.until(ExpectedConditions.visibilityOf(citiesPage.getDeletePopup()));
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        action.moveToElement(citiesPage.getDeleteCityConfirm()).perform();
+        driverWait.until(ExpectedConditions.visibilityOf(citiesPage.getDeleteCityConfirm()));
         citiesPage.getDeleteCityConfirm().click();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getByDeleteSuccessfull()));

@@ -9,22 +9,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CitiesPage extends BasePage {
 
     private By citiesLogout = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]");
-    private By newItembutton =
-            By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[1]/div[3]/form/div[1]/button");
+    private By newItembutton = By.className("btnNewItem");
     private By enterNewCity = By.id("name");
-    private By saveNewItem = By.xpath("/html/body/div/div[5]/div/div/div[3]/button[2]");
-    private By saveMessage = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]");
+    private By saveNewItem = By.className("btnSave");
+    private By saveMessage = By.xpath("//div[contains(text(),'Saved successfully')]");
     private By editButton = By.id("edit");
     private By saveEdit = By.xpath("//*[@id='app']/div[5]/div/div/div[3]/button[2]");
     private By enterEditCity = By.id("name");
-    private By nameOfTheCity =
-            By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr[1]/td[2]");
+    private By nameOfTheCity = By.xpath("//tr/td[2]");
     private By deleteCity = By.id("delete");
-    private By deleteCityConfirm = By.xpath("/html/body/div/div[5]/div/div/div[2]/button[2]");
-    private By deletePopup = By.xpath("/html/body/div/div[10]/div/div");
+    private By deleteCityConfirm = By.className("text--lighten3");
     private By searchBar = By.id("search");
-    private By deleteSuccessfull =
-            By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]");
+    private By deleteSuccessfull = By.xpath("//div[contains(text(),'Deleted successfully')]");
 
     public CitiesPage(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
@@ -44,10 +40,6 @@ public class CitiesPage extends BasePage {
 
     public WebElement getEnterNewCity() {
         return getDriver().findElement(enterNewCity);
-    }
-
-    public By getByEnterNewCity() {
-        return enterNewCity;
     }
 
     public WebElement getSaveNewItem() {
@@ -126,8 +118,5 @@ public class CitiesPage extends BasePage {
         return deleteSuccessfull;
     }
 
-    public WebElement getDeletePopup() {
-        return getDriver().findElement(deletePopup);
-    }
 
 }

@@ -64,4 +64,5 @@ public class LoginPage extends BasePage {
         getEmail().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
         getPassword().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
     }
+
 }
