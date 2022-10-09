@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,7 +28,7 @@ public abstract class BaseTest {
 
     public void afterMethodSetup() {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(homePage.getByLogoutButton()));
-        homePage.getLogoutButton().click();
+        homePage.getLogoutButton().sendKeys(Keys.ENTER);
     }
 
     @AfterClass

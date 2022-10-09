@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MyProfilePage extends BasePage{
+public class MyProfilePage extends BasePage {
 
     private By nameField = By.id("name");
     private By phoneField = By.id("phone");
@@ -15,10 +15,8 @@ public class MyProfilePage extends BasePage{
     private By countryField = By.id("country");
     private By twitterField = By.id("urlTwitter");
     private By gitHubField = By.id("urlGitHub");
-    private By saveButton =
-            By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[2]/span/form/div/div/div[8]/button");
-    private By saveMessage =
-            By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]");
+    private By saveButton = By.className("btnSave");
+    private By saveMessage = By.xpath("//div[contains(text(),' Profile saved successfuly ')]");
     private Faker faker = new Faker();
 
 
@@ -26,67 +24,67 @@ public class MyProfilePage extends BasePage{
         super(driver, driverWait);
     }
 
-    public WebElement getNameField(){
+    public WebElement getNameField() {
         return getDriver().findElement(nameField);
     }
 
-    public WebElement getPhoneField(){
+    public WebElement getPhoneField() {
         return getDriver().findElement(phoneField);
     }
 
-    public WebElement getCityField(){
+    public WebElement getCityField() {
         return getDriver().findElement(cityField);
     }
 
-    public WebElement getCountryField(){
+    public WebElement getCountryField() {
         return getDriver().findElement(countryField);
     }
 
-    public WebElement getTwitterField(){
+    public WebElement getTwitterField() {
         return getDriver().findElement(twitterField);
     }
 
-    public WebElement getGitHubField(){
+    public WebElement getGitHubField() {
         return getDriver().findElement(gitHubField);
     }
 
-    public WebElement getSaveButton(){
+    public WebElement getSaveButton() {
         return getDriver().findElement(saveButton);
     }
 
-    public By getBySaveButton(){
+    public By getBySaveButton() {
         return saveButton;
     }
 
-    public String getFakeName(){
+    public String getFakeName() {
         return faker.name().fullName();
     }
 
-    public String getFakePhone(){
+    public String getFakePhone() {
         return faker.phoneNumber().phoneNumber();
     }
 
-    public String getFakeCity(){
+    public String getFakeCity() {
         return faker.address().city();
     }
 
-    public String getFakeCountry(){
+    public String getFakeCountry() {
         return faker.address().country();
     }
 
-    public String getFakeTwitter(){
+    public String getFakeTwitter() {
         return "http://" + faker.internet().domainName() + faker.internet().domainSuffix();
     }
 
-    public String getFakeGitHub(){
+    public String getFakeGitHub() {
         return "https://" + faker.internet().domainName() + faker.internet().domainSuffix();
     }
 
-    public WebElement getSaveMessage(){
+    public WebElement getSaveMessage() {
         return getDriver().findElement(saveMessage);
     }
 
-    public By getBySaveMessage(){
+    public By getBySaveMessage() {
         return saveMessage;
     }
 

@@ -14,8 +14,7 @@ public class SignUpPage extends BasePage {
     private By confirmPassword = By.id("confirmPassword");
     private By signMeUpButton =
             By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button");
-    private By userError =
-            By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div/div[1]/ul/li");
+     private By userError = By.xpath("//li[contains(text(),'E-mail already exists')]");
     public By verifyUserCancelBtn = By.xpath("/html/body/div/div[4]/div/div/div[3]/button");
 
     public String adminName = "Test Test";

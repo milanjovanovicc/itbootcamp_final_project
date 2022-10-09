@@ -28,7 +28,7 @@ public class AdminCitiesTest extends BaseTest {
 
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
         loginPage.getEmail().sendKeys(loginPage.getAdminEmail());
@@ -42,7 +42,7 @@ public class AdminCitiesTest extends BaseTest {
         homePage.getAdminListCities().click();
     }
 
-    @Test(priority = 1)
+    @Test
     public void verifyCitiesPageAndListExists() {
         String expectedUrl = "/admin/cities";
         String expectedLogoutBtn = "LOGOUT";
@@ -107,7 +107,6 @@ public class AdminCitiesTest extends BaseTest {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getByNameOfTheCity()));
         String actualResult = citiesPage.getNameOfTheCity().getText();
         Assert.assertTrue(actualResult.contains(expectedResult));
-        
 
     }
 

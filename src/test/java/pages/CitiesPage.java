@@ -15,7 +15,6 @@ public class CitiesPage extends BasePage {
     private By saveMessage = By.xpath("//div[contains(text(),'Saved successfully')]");
     private By editButton = By.id("edit");
     private By saveEdit = By.xpath("//*[@id='app']/div[5]/div/div/div[3]/button[2]");
-    private By enterEditCity = By.id("name");
     private By nameOfTheCity = By.xpath("//tr/td[2]");
     private By deleteCity = By.id("delete");
     private By deleteCityConfirm = By.className("text--lighten3");
