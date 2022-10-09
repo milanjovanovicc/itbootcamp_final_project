@@ -114,7 +114,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(priority = 6)
-    public void logout() {
+    public void logoutTest() {
         loginPage.clearEmailPasswordFields();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));

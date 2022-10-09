@@ -107,6 +107,7 @@ public class AdminCitiesTest extends BaseTest {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getByNameOfTheCity()));
         String actualResult = citiesPage.getNameOfTheCity().getText();
         Assert.assertTrue(actualResult.contains(expectedResult));
+        
 
     }
 

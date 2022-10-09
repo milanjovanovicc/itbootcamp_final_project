@@ -7,18 +7,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
 
-    private By loginButton = By.xpath("/html/body/div/div/div/header/div/div[3]/a[3]");
-    //    private By logoutButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]");
+    private By loginButton = By.xpath("//a[@href='/login']");
     private By logoutButton = By.className("btnLogout");
-    private By logoutText = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]/span");
+    private By logoutText = By.xpath("//span[contains(text(),'Logout')]");
     private By signUpButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[4]");
     private By verifyYourAccount = By.xpath("/html/body/div/div[4]/div/div/div[1]");
-//    private By adminButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[1]");
     private By adminButton = By.className("btnAdmin");
-    //private By adminListCities = By.xpath("//*[@id='app']/div[3]/div[1]/a[1]");
-//    private By adminListCities = By.className("btnAdminCities");
     private By adminListCities = By.xpath("//a[@href='/admin/cities']");
-
     private By localeButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button");
     private By localeListES = By.xpath("/html/body/div/div[2]/div/div[2]");
     private By headerText = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[1]/h1");
