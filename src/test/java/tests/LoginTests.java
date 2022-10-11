@@ -15,7 +15,7 @@ public class LoginTests extends BaseTest {
     private LoginPage loginPage;
 
     @BeforeClass
-    public void beforeclass() {
+    public void Beforeclass() {
         setup();
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);

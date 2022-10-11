@@ -28,7 +28,7 @@ public class AdminCitiesTest extends BaseTest {
 
     }
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeMethod
     public void beforeMethod() {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
         loginPage.getEmail().sendKeys(loginPage.getAdminEmail());
@@ -56,7 +56,7 @@ public class AdminCitiesTest extends BaseTest {
 
     }
 
-    @Test(priority = 2)
+    @Test
     public void verifyNewCityIsCreated() {
         String expectedResult = "Saved successfully";
 
@@ -76,7 +76,7 @@ public class AdminCitiesTest extends BaseTest {
 
     }
 
-    @Test(priority = 3)
+    @Test(dependsOnMethods = {"verifyNewCityIsCreated"})
     private void verifyCityIsEdited() {
         String expectedResponse = "Saved successfully";
 
@@ -97,9 +97,9 @@ public class AdminCitiesTest extends BaseTest {
 
     }
 
-    @Test(priority = 4)
+    @Test(dependsOnMethods = {"verifyCityIsEdited"})
     public void verifySearchWorks() {
-        String expectedResult = "Morinj";
+        String expectedResult = "Morinj edited";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(citiesPage.getBySearchBar()));
         citiesPage.getSearchBar().sendKeys(citiesPage.getEditedCityName());
@@ -110,7 +110,7 @@ public class AdminCitiesTest extends BaseTest {
 
     }
 
-    @Test(priority = 5)
+    @Test(dependsOnMethods = {"verifySearchWorks"})
     public void verifyCityIsDeleted() {
         String expecetedMessage = "Deleted successfully";
         String expectedCity = "Morinj";
