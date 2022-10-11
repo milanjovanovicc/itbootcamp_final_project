@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CitiesPage extends BasePage {
 
-    private By citiesLogout = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button[2]");
+    private By citiesLogout = By.className("btnLogout");
     private By newItembutton = By.className("btnNewItem");
     private By enterNewCity = By.id("name");
     private By saveNewItem = By.className("btnSave");

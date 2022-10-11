@@ -10,11 +10,9 @@ public class LoginPage extends BasePage {
 
     private By email = By.id("email");
     private By password = By.id("password");
-    private By loginBtn = By.xpath("/html/body/div/div/main/div/div[2]/div/div/div[3]/span/form/div/div[3]/button");
-    private By userErrorWindow = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li");
-    private By userErrorMessage = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li");
-    private By passwordErrorWindow = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li");
-    private By passwordErrorMessage = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/ul/li");
+    private By loginBtn = By.className("secondary");
+    private By userErrorMessage = By.xpath("//li[contains(text(),'User does not exists')]");
+    private By passwordErrorMessage = By.xpath("//li[contains(text(),'Wrong password')]");
     private By homeButton = By.xpath("//a[@href='/']");
 
     public LoginPage(WebDriver driver, WebDriverWait driverWait) {
@@ -41,16 +39,16 @@ public class LoginPage extends BasePage {
         return getDriver().findElement(userErrorMessage);
     }
 
-    public By getByUserErrorWindow() {
-        return userErrorWindow;
+    public By getByUserErrorMessage() {
+        return userErrorMessage;
     }
 
     public WebElement getPasswordErrorMessage() {
         return getDriver().findElement(passwordErrorMessage);
     }
 
-    public By getByPasswordErrorWindow() {
-        return passwordErrorWindow;
+    public By getByPasswordErrorMessage() {
+        return passwordErrorMessage;
     }
 
     public WebElement getHomeButton() {

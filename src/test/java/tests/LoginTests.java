@@ -61,7 +61,7 @@ public class LoginTests extends BaseTest {
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);
 
-        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByUserErrorWindow()));
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByUserErrorMessage()));
         String actualText = loginPage.getUserErrorMessage().getText();
 
         Assert.assertEquals(actualText, expectedText);
@@ -83,7 +83,7 @@ public class LoginTests extends BaseTest {
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);
 
-        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByPasswordErrorWindow()));
+        driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByPasswordErrorMessage()));
         String actualText = loginPage.getPasswordErrorMessage().getText();
 
         Assert.assertEquals(actualText, expectedText);
