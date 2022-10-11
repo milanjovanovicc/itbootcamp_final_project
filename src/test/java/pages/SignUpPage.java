@@ -12,10 +12,9 @@ public class SignUpPage extends BasePage {
     private By email = By.id("email");
     private By password = By.id("password");
     private By confirmPassword = By.id("confirmPassword");
-    private By signMeUpButton =
-            By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div/div[2]/span/form/div/div[5]/button");
+    private By signMeUpButton = By.className("secondary");
      private By userError = By.xpath("//li[contains(text(),'E-mail already exists')]");
-    public By verifyUserCancelBtn = By.xpath("/html/body/div/div[4]/div/div/div[3]/button");
+    public By verifyUserCancelBtn = By.className("btnClose");
 
     public String adminName = "Test Test";
     public String adminEmail = "admin@admin.com";

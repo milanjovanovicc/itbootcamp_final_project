@@ -4,6 +4,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -21,11 +22,16 @@ public class SignUpTests extends BaseTest {
         homePage = new HomePage(driver, driverWait);
         signUpPage = new SignUpPage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
+
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getSignUpButton()));
         homePage.getSignUpButton().sendKeys(Keys.ENTER);
     }
 
-    @Test(priority = 1)
+    @Test
     public void checksIfItIsOnsignUpPage() {
         String expectedResult = "/signup";
 
@@ -36,7 +42,7 @@ public class SignUpTests extends BaseTest {
         Assert.assertTrue(actualResult.contains(expectedResult));
     }
 
-    @Test(priority = 2)
+    @Test
     public void checksInputTypes() {
         String expectedEmail = "email";
         String expectedPassword = "password";
@@ -51,7 +57,7 @@ public class SignUpTests extends BaseTest {
         Assert.assertEquals(actualConfirmPassword, expectedPassword);
     }
 
-    @Test(priority = 3)
+    @Test
     public void verifyErrorDisplayIfUserExists() {
         String expectedUserError = "E-mail already exists";
         String expectedUrl = "/signup";
@@ -72,7 +78,7 @@ public class SignUpTests extends BaseTest {
 
     }
 
-    @Test(priority = 4)
+    @Test
     public void signUpWithValidCredentials() {
         signUpPage.clearAllFields();
         String expectedVerifyYourAccount = "IMPORTANT: Verify your account";
@@ -92,6 +98,7 @@ public class SignUpTests extends BaseTest {
         signUpPage.getVerifyUserCancelBtn().click();
 
         afterMethodSetup();
+        loginPage.getHomeButton().click();
 
     }
 

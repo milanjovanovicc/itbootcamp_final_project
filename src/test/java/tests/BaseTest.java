@@ -31,8 +31,8 @@ public abstract class BaseTest {
         homePage.getLogoutButton().sendKeys(Keys.ENTER);
     }
 
-    @AfterClass
+/*    @AfterClass
     public void afterClass() {
         driver.quit();
-    }
+    }*/
 }
