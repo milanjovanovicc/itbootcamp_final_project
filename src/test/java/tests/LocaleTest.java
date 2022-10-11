@@ -13,7 +13,6 @@ public class LocaleTest extends BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        setup();
         homePage = new HomePage(driver, driverWait);
 
     }

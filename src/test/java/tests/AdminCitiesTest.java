@@ -19,7 +19,6 @@ public class AdminCitiesTest extends BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        setup();
         homePage = new HomePage(driver, driverWait);
         citiesPage = new CitiesPage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);

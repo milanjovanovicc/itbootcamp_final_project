@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import pages.HomePage;
 
 import java.time.Duration;
@@ -16,7 +17,8 @@ public abstract class BaseTest {
     protected WebDriverWait driverWait;
     protected HomePage homePage;
 
-    public void setup() {
+    @BeforeClass
+    public void beforeClassSetup() {
         System.setProperty("webdriver.gecko.driver", "C:\\Milan\\Programiranje\\Java\\Selenium\\geckodriver.exe");
         driver = new FirefoxDriver();
         driver.get("https://vue-demo.daniel-avellaneda.com");
@@ -31,8 +33,8 @@ public abstract class BaseTest {
         homePage.getLogoutButton().sendKeys(Keys.ENTER);
     }
 
-/*    @AfterClass
+    @AfterClass
     public void afterClass() {
         driver.quit();
-    }*/
+    }
 }

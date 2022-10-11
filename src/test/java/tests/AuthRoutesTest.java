@@ -13,7 +13,6 @@ public class AuthRoutesTest extends BaseTest {
 
     @BeforeClass
     private void beforeClass() {
-        setup();
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
 

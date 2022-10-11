@@ -19,7 +19,6 @@ public class ProfileTest extends BaseTest {
 
     @BeforeClass
     private void beforeClass() {
-        setup();
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
         myProfilePage = new MyProfilePage(driver, driverWait);

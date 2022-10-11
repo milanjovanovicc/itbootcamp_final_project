@@ -18,7 +18,6 @@ public class SignUpTests extends BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        setup();
         homePage = new HomePage(driver, driverWait);
         signUpPage = new SignUpPage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
