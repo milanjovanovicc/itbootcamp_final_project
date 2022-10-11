@@ -1,6 +1,6 @@
 package tests;
 
-import com.github.javafaker.Faker;
+import Extras.FakerClass;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -13,11 +13,13 @@ public class LoginTests extends BaseTest {
 
     private HomePage homePage;
     private LoginPage loginPage;
+    private FakerClass fakerClass;
 
     @BeforeClass
     public void Beforeclass() {
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
+        fakerClass = new FakerClass();
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getLoginButton()));
         homePage.getLoginButton().sendKeys(Keys.ENTER);
     }
@@ -48,15 +50,13 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginWithInvalidEmail() {
-        Faker faker = new Faker();
-
         String expectedText = "User does not exists";
         String expectedUrl = "/login";
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
 
-        loginPage.getEmail().sendKeys(faker.internet().emailAddress());
-        loginPage.getPassword().sendKeys(faker.internet().password());
+        loginPage.getEmail().sendKeys(fakerClass.getFakeEmail());
+        loginPage.getPassword().sendKeys(fakerClass.getFakePassword());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);
@@ -71,7 +71,6 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginWithInvalidPassword() {
-        Faker faker = new Faker();
         loginPage.clearEmailPasswordFields();
 
         String expectedText = "Wrong password";
@@ -79,7 +78,7 @@ public class LoginTests extends BaseTest {
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
         loginPage.getEmail().sendKeys(loginPage.getAdminEmail());
-        loginPage.getPassword().sendKeys(faker.internet().password());
+        loginPage.getPassword().sendKeys(fakerClass.getFakePassword());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);

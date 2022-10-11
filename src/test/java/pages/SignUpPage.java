@@ -15,7 +15,6 @@ public class SignUpPage extends BasePage {
     private By signMeUpButton = By.className("secondary");
      private By userError = By.xpath("//li[contains(text(),'E-mail already exists')]");
     public By verifyUserCancelBtn = By.className("btnClose");
-
     public String adminName = "Test Test";
     public String adminEmail = "admin@admin.com";
     public String adminPassword = "123654";

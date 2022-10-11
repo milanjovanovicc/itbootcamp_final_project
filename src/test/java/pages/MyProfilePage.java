@@ -1,6 +1,5 @@
 package pages;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +16,6 @@ public class MyProfilePage extends BasePage {
     private By gitHubField = By.id("urlGitHub");
     private By saveButton = By.className("btnSave");
     private By saveMessage = By.xpath("//div[contains(text(),' Profile saved successfuly ')]");
-    private Faker faker = new Faker();
 
 
     public MyProfilePage(WebDriver driver, WebDriverWait driverWait) {
@@ -54,30 +52,6 @@ public class MyProfilePage extends BasePage {
 
     public By getBySaveButton() {
         return saveButton;
-    }
-
-    public String getFakeName() {
-        return faker.name().fullName();
-    }
-
-    public String getFakePhone() {
-        return faker.phoneNumber().phoneNumber();
-    }
-
-    public String getFakeCity() {
-        return faker.address().city();
-    }
-
-    public String getFakeCountry() {
-        return faker.address().country();
-    }
-
-    public String getFakeTwitter() {
-        return "http://" + faker.internet().domainName() + faker.internet().domainSuffix();
-    }
-
-    public String getFakeGitHub() {
-        return "https://" + faker.internet().domainName() + faker.internet().domainSuffix();
     }
 
     public WebElement getSaveMessage() {
