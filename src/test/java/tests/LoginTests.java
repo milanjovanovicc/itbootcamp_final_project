@@ -23,7 +23,7 @@ public class LoginTests extends BaseTest {
         homePage.getLoginButton().sendKeys(Keys.ENTER);
     }
 
-    @Test(priority = 1)
+    @Test
     public void checksIfItIsOnLoginPage() {
         String expectedResult = "/login";
 
@@ -32,7 +32,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(actualResult.contains(expectedResult));
     }
 
-    @Test(priority = 2)
+    @Test
     public void checkInputTypes() {
         String expectedEmail = "email";
         String expectedPassword = "password";
@@ -47,7 +47,7 @@ public class LoginTests extends BaseTest {
 
     }
 
-    @Test(priority = 3)
+    @Test
     public void loginWithInvalidEmail() {
         Faker faker = new Faker();
 
@@ -70,7 +70,7 @@ public class LoginTests extends BaseTest {
 
     }
 
-    @Test(priority = 4)
+    @Test
     public void loginWithInvalidPassword() {
         Faker faker = new Faker();
         loginPage.clearEmailPasswordFields();
@@ -93,7 +93,7 @@ public class LoginTests extends BaseTest {
 
     }
 
-    @Test(priority = 5)
+    @Test
     public void loginWithValidCredentials() {
         String expectedUrl = "/home";
 
@@ -113,9 +113,8 @@ public class LoginTests extends BaseTest {
         afterMethodSetup();
     }
 
-    @Test(priority = 6)
+    @Test
     public void logoutTest() {
-        loginPage.clearEmailPasswordFields();
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
         loginPage.getEmail().sendKeys(loginPage.getAdminEmail());
