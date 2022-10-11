@@ -10,15 +10,19 @@ public class HomePage extends BasePage {
     private By loginButton = By.xpath("//a[@href='/login']");
     private By logoutButton = By.className("btnLogout");
     private By logoutText = By.xpath("//span[contains(text(),'Logout')]");
-    private By signUpButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/a[4]");
-    private By verifyYourAccount = By.xpath("/html/body/div/div[4]/div/div/div[1]");
+    private By signUpButton = By.xpath("//a[@href='/signup']");
+    private By verifyYourAccount = By.xpath("//div[contains(text(),' IMPORTANT: Verify your account ')]");
     private By adminButton = By.className("btnAdmin");
     private By adminListCities = By.xpath("//a[@href='/admin/cities']");
-    private By localeButton = By.xpath("/html/body/div/div[1]/div/header/div/div[3]/button");
-    private By localeListES = By.xpath("/html/body/div/div[2]/div/div[2]");
-    private By headerText = By.xpath("/html/body/div/div[1]/main/div/div[2]/div/div[1]/div[1]/h1");
-    private By localeListEN = By.xpath("/html/body/div/div[2]/div/div[1]");
-    private By localeListFR = By.xpath("/html/body/div/div[2]/div/div[3]");
+    private By localeButton = By.className("btnLocaleActivation");
+    private By localeListES = By.className("btnES");
+
+    private By headerText = By.className("display-2");
+
+    private By localeListEN = By.className("btnEN");
+
+    private By localeListFR = By.className("btnFR");
+
     private By myProfile = By.className("btnProfile");
 
 
