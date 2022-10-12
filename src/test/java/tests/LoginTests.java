@@ -1,6 +1,6 @@
 package tests;
 
-import Extras.FakerClass;
+import extras.FakerClass;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -13,13 +13,11 @@ public class LoginTests extends BaseTest {
 
     private HomePage homePage;
     private LoginPage loginPage;
-    private FakerClass fakerClass;
 
     @BeforeClass
     public void Beforeclass() {
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
-        fakerClass = new FakerClass();
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getLoginButton()));
         homePage.getLoginButton().sendKeys(Keys.ENTER);
     }
@@ -55,8 +53,8 @@ public class LoginTests extends BaseTest {
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
 
-        loginPage.getEmail().sendKeys(fakerClass.getFakeEmail());
-        loginPage.getPassword().sendKeys(fakerClass.getFakePassword());
+        loginPage.getEmail().sendKeys(FakerClass.getFakeEmail());
+        loginPage.getPassword().sendKeys(FakerClass.getFakePassword());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);
@@ -78,7 +76,7 @@ public class LoginTests extends BaseTest {
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getByEmail()));
         loginPage.getEmail().sendKeys(loginPage.getAdminEmail());
-        loginPage.getPassword().sendKeys(fakerClass.getFakePassword());
+        loginPage.getPassword().sendKeys(FakerClass.getFakePassword());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(loginPage.getLoginBtn()));
         loginPage.getLoginBtn().sendKeys(Keys.ENTER);

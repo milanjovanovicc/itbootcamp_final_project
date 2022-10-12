@@ -1,6 +1,6 @@
 package tests;
 
-import Extras.FakerClass;
+import extras.FakerClass;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -17,14 +17,12 @@ public class ProfileTest extends BaseTest {
     private HomePage homePage;
     private LoginPage loginPage;
     private MyProfilePage myProfilePage;
-    private FakerClass fakerClass;
 
     @BeforeClass
     private void beforeClass() {
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
         myProfilePage = new MyProfilePage(driver, driverWait);
-        fakerClass = new FakerClass();
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getLoginButton()));
         homePage.getLoginButton().sendKeys(Keys.ENTER);
 
@@ -44,12 +42,12 @@ public class ProfileTest extends BaseTest {
 
         driverWait.until(ExpectedConditions.presenceOfElementLocated(myProfilePage.getBySaveButton()));
         myProfilePage.clearAllFields();
-        myProfilePage.getNameField().sendKeys(fakerClass.getFakeName());
-        myProfilePage.getPhoneField().sendKeys(fakerClass.getFakePhone());
-        myProfilePage.getCityField().sendKeys(fakerClass.getFakeCity());
-        myProfilePage.getCountryField().sendKeys(fakerClass.getFakeCountry());
-        myProfilePage.getTwitterField().sendKeys(fakerClass.getFakeTwitter());
-        myProfilePage.getGitHubField().sendKeys(fakerClass.getFakeGitHub());
+        myProfilePage.getNameField().sendKeys(FakerClass.getFakeName());
+        myProfilePage.getPhoneField().sendKeys(FakerClass.getFakePhone());
+        myProfilePage.getCityField().sendKeys(FakerClass.getFakeCity());
+        myProfilePage.getCountryField().sendKeys(FakerClass.getFakeCountry());
+        myProfilePage.getTwitterField().sendKeys(FakerClass.getFakeTwitter());
+        myProfilePage.getGitHubField().sendKeys(FakerClass.getFakeGitHub());
 
         driverWait.until(ExpectedConditions.elementToBeClickable(myProfilePage.getSaveButton()));
         myProfilePage.getSaveButton().click();
