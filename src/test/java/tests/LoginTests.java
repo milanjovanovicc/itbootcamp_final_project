@@ -15,7 +15,7 @@ public class LoginTests extends BaseTest {
     private LoginPage loginPage;
 
     @BeforeClass
-    public void Beforeclass() {
+    public void beforeclass() {
         homePage = new HomePage(driver, driverWait);
         loginPage = new LoginPage(driver, driverWait);
         driverWait.until(ExpectedConditions.elementToBeClickable(homePage.getLoginButton()));
